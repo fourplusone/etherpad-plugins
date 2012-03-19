@@ -1,0 +1,11 @@
+{
+  "parts": [
+    {
+      "name": "main",
+      "client_hooks": {
+        "aceGetFilterStack": "ep_linkify/static/js/index:aceGetFilterStack",
+        "aceCreateDomLine": "ep_linkify/static/js/index:aceCreateDomLine"
+      }
+    }
+  ]
+}

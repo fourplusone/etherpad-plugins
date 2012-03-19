@@ -1,0 +1,16 @@
+{
+  "name": "ep_linkify",
+  "description": "Adds internal Links",
+  "version": "0.0.1",
+  "author": "fourplusone <info@fourplusone.de>",
+  "contributors": [],
+  "dependencies": {},
+  "engines": {
+    "node": ">= 0.4.1 < 0.7.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Pita/etherpad-lite.git"
+  }
+}
