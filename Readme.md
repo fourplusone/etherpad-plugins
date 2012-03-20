@@ -4,8 +4,8 @@
 
 
 # Installation
-
+```
   cd [your etherpad installation];
   npm install [path-to-etherpad-plugins]/ep_linkify
-
+```
 License: MIT
