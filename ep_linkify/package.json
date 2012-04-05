@@ -1,16 +1,22 @@
 {
   "name": "ep_linkify",
-  "description": "Adds internal Links",
-  "version": "0.0.1",
+  "description": "Adds internal links to etherpad lite. This is a plugin for etherpad lite, so you'll need to install etherpad-lite to use it.",
+  "version": "0.1.0",
   "author": "fourplusone <info@fourplusone.de>",
-  "contributors": [],
+  "contributors": [
+  	{
+		"name": "Matthias Bartelmeß",
+  		"email": "mba@fourplusone.de"
+	}
+  ],
   "dependencies": {},
   "engines": {
-    "node": ">= 0.4.1 < 0.7.0"
+    "node": "*"
   },
+  "homepage": "https://github.com/fourplusone/etherpad-plugins",
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/Pita/etherpad-lite.git"
+    "url": "git://github.com/fourplusone/etherpad-plugins.git"
   }
 }
