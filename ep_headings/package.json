@@ -1,0 +1,14 @@
+{
+  "author": "",
+  "name": "ep_headings",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fourplusone/etherpad-plugins.git"
+  },
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
