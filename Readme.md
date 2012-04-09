@@ -9,6 +9,6 @@
   npm install [path-to-etherpad-plugins]/[plugin-name]
 ```
 
-Where plugin name is ep_linkify or ep_headings
+Where `plugin-name` is ep_linkify or ep_headings
 
 License: MIT
