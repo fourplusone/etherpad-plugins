@@ -1,8 +1,11 @@
-var Security = require('ep_etherpad-lite/static/js/security.js');
+/* Include the Security module, we will use this later to escape a HTML attribute*/
+var Security = require('ep_etherpad-lite/static/js/security.js'); 
 
+/* Define the regular expressions we will use to detect if a string looks like a reference to a pad IE [[foo]] */
 var internalHrefRegexp = new RegExp(/\[\[([^\]]+)\]\]/g);
 var timesliderRegexp = new RegExp(/p\/[^\/]*\/timeslider/g);
 
+/* Take the string and remove the first and last 2 characters IE [[foo]] returns foo */
 var linkSanitizingFn = function(result){
   if(!result) return result;
   result.index = result.index + 2;
@@ -14,6 +17,7 @@ var linkSanitizingFn = function(result){
 };
 
 
+/* Define a custom regular expression object */
 var CustomRegexp = function(regexp, sanitizeResultFn){
   this.regexp = regexp;
   this.sanitizeResultFn = sanitizeResultFn;
@@ -28,12 +32,12 @@ var getCustomRegexpFilter = function(regExp, tag, sanitizeFn, linestylefilter)
 {
   var customRegexp = new CustomRegexp(regExp, sanitizeFn);
   var filter =  linestylefilter.getRegexpFilter(customRegexp, tag);
-  return filter
+  return filter;
 }
+/* End of defining a custom regular expression object */
 
 
 exports.aceCreateDomLine = function(name, context){
-  
   var internalHref;
   var cls = context.cls;
   var domline = context.domline;
@@ -41,7 +45,7 @@ exports.aceCreateDomLine = function(name, context){
   // TODO find a more elegant way.
   var inTimeslider = (timesliderRegexp.exec(document.location.href) !== null);
   
-  if (cls.indexOf('internalHref') >= 0)
+  if (cls.indexOf('internalHref') >= 0) // if it already has the class of internalHref
   {
     cls = cls.replace(/(^| )internalHref:(\S+)/g, function(x0, space, url)
     {
@@ -52,7 +56,6 @@ exports.aceCreateDomLine = function(name, context){
   
   if (internalHref)
   {
-    
     var url = (inTimeslider ? '../' : './') + internalHref;
     var modifier = {
       extraOpenTags: '<a href="' + Security.escapeHTMLAttribute(url) +'">',
@@ -66,13 +69,11 @@ exports.aceCreateDomLine = function(name, context){
 
 exports.aceGetFilterStack = function(name, context){
   var linestylefilter = context.linestylefilter;
-    
   var filter = getCustomRegexpFilter(
     internalHrefRegexp,
     'internalHref',
     linkSanitizingFn,
     linestylefilter
   );
-  
   return [filter];
 }

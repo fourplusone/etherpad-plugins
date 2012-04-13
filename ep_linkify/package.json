@@ -1,13 +1,17 @@
 {
   "name": "ep_linkify",
-  "description": "Adds internal links to etherpad lite. This is a plugin for etherpad lite, so you'll need to install etherpad-lite to use it.",
-  "version": "0.1.0",
+  "description": "Adds internal links to etherpad lite. To create internal links use [[example]] style formatting",
+  "version": "0.1.1",
   "author": "fourplusone <info@fourplusone.de>",
   "contributors": [
   	{
 		"name": "Matthias Bartelmeß",
   		"email": "mba@fourplusone.de"
-	}
+	},
+        {
+                "name": "John McLear",
+                "email": "john@mclear.co.uk"
+        }
   ],
   "dependencies": {},
   "engines": {
