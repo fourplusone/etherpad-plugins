@@ -3,6 +3,8 @@ var Security = require('ep_etherpad-lite/static/js/security.js');
 
 /* Define the regular expressions we will use to detect if a string looks like a reference to a pad IE [[foo]] */
 var internalHrefRegexp = new RegExp(/\[\[([^\]]+)\]\]/g);
+
+// Define a regexp to detect if we are in timeslider
 var timesliderRegexp = new RegExp(/p\/[^\/]*\/timeslider/g);
 
 /* Take the string and remove the first and last 2 characters IE [[foo]] returns foo */
@@ -17,24 +19,32 @@ var linkSanitizingFn = function(result){
 };
 
 
-/* Define a custom regular expression object */
+/* CustomRegexp provides a wrapper around a RegExp Object which applies a given function to the result of the Regexp
+  @param regexp the regexp to be wrapped
+  @param sanitizeResultFn the function to be applied to the result. 
+*/
 var CustomRegexp = function(regexp, sanitizeResultFn){
   this.regexp = regexp;
   this.sanitizeResultFn = sanitizeResultFn;
 };
+
 
 CustomRegexp.prototype.exec = function(text){
   var result = this.regexp.exec(text); 
   return this.sanitizeResultFn(result);
 }
 
-var getCustomRegexpFilter = function(regExp, tag, sanitizeFn, linestylefilter)
+
+/* getCustomRegexpFilter returns a linestylefilter compatible filter for a CustomRegexp
+  @param customRegexp the CustomRegexp Object
+  @param tag the tag to be filtered
+  @param linestylefilter reference to linestylefilter module
+*/
+var getCustomRegexpFilter = function(customRegexp, tag, linestylefilter)
 {
-  var customRegexp = new CustomRegexp(regExp, sanitizeFn);
   var filter =  linestylefilter.getRegexpFilter(customRegexp, tag);
   return filter;
 }
-/* End of defining a custom regular expression object */
 
 
 exports.aceCreateDomLine = function(name, context){
@@ -70,9 +80,8 @@ exports.aceCreateDomLine = function(name, context){
 exports.aceGetFilterStack = function(name, context){
   var linestylefilter = context.linestylefilter;
   var filter = getCustomRegexpFilter(
-    internalHrefRegexp,
+    new CustomRegexp(internalHrefRegexp, linkSanitizingFn),
     'internalHref',
-    linkSanitizingFn,
     linestylefilter
   );
   return [filter];
