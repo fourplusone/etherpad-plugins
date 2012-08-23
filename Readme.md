@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/fourplusone/etherpad-plugins.png)](http://travis-ci.org/fourplusone/etherpad-plugins)
 # Etherpad-Lite plugins
 
 - Linkify: Adds internal links (ep_linkify)
