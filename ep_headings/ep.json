@@ -13,11 +13,6 @@
       },
       "hooks": {
         "eejsBlock_editbarMenuLeft": "ep_headings/index"
-      },
-      ".client_hooks": {
-        "aceGetFilterStack": "ep_headings/static/js/index:aceGetFilterStack",
-        "aceCreateDomLine": "ep_headings/static/js/index:aceCreateDomLine",
-        "aceDomLineProcessLineAttributes": "ep_headings/static/js/index:aceDomLineProcessLineAttributes"
       }
     }
   ]
