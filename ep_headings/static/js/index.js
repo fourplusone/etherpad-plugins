@@ -4,23 +4,9 @@ var $ = require('ep_etherpad-lite/static/js/rjquery').$;
 var _ = require('ep_etherpad-lite/static/js/underscore');
 var headingClass = 'heading';
 var cssFiles = ['ep_headings/static/css/editor.css'];
-var tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-
-// Here we collect our <h1>...<h6> tags and transform them tho heading
-// attributes.
-
-var collectContentPre = function(hook, context){
-  var tname = context.tname;
-  var state = context.state;
-  var lineAttributes = state.lineAttributes
-  var tagIndex = _.indexOf(tags, tname);
-  
-  if(tagIndex >= 0){
-    lineAttributes['heading'] = tags[tagIndex];
-  }
-};
 
 // All our tags are block elements, so we just return them.
+var tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 var aceRegisterBlockElements = function(){
   return tags;
 }
@@ -108,7 +94,6 @@ function aceEditorCSS(){
 
 // Export all hooks
 exports.aceRegisterBlockElements = aceRegisterBlockElements;
-exports.collectContentPre = collectContentPre;
 exports.aceInitialized = aceInitialized;
 exports.postAceInit = postAceInit;
 exports.aceDomLineProcessLineAttributes = aceDomLineProcessLineAttributes;
