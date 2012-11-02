@@ -7,13 +7,22 @@ var collectContentPre = function(hook, context){
   var state = context.state;
   var lineAttributes = state.lineAttributes
   var tagIndex = _.indexOf(tags, tname);
-  
+
   if(tagIndex >= 0){
     lineAttributes['heading'] = tags[tagIndex];
   }
-  else {
+};
+
+var collectContentPost = function(hook, context){
+  var tname = context.tname;
+  var state = context.state;
+  var lineAttributes = state.lineAttributes
+  var tagIndex = _.indexOf(tags, tname);
+
+  if(tagIndex >= 0){
     delete lineAttributes['heading'];
   }
 };
 
 exports.collectContentPre = collectContentPre;
+exports.collectContentPost = collectContentPost;
