@@ -18,7 +18,7 @@ var postAceInit = function(hook, context){
     var value = $(this).val();
     var intValue = parseInt(value,10);
     if(!_.isNaN(intValue)){
-      context.ace.callWithAce(function(ace){
+      context.ace.callWithAce(function(ace){ //ace is not defined?
         ace.ace_doInsertHeading(intValue);
       },'insertheading' , true);
       hs.val("dummy");
@@ -92,6 +92,28 @@ function aceEditorCSS(){
   return cssFiles;
 };
 
+function aceKeyEvent(hook, callstack){
+  // h1 = 49
+  // h2 = 50
+  // h3 = 51
+  
+  var evt = callstack.evt;
+  var k = evt.keyCode;
+  if(evt.ctrlKey && ( k == 49 || k == 50 || k == 51 ) ){
+    if ( k == 49 ){ // h1
+      callstack.editorInfo.ace_doInsertHeading(0);
+    }
+    if ( k == 50 ){ // h2
+      callstack.editorInfo.ace_doInsertHeading(1);
+    }
+    if ( k == 51 ){ // h3
+      callstack.editorInfo.ace_doInsertHeading(2);
+    }
+    evt.preventDefault();
+    return true;
+  }
+}
+
 // Export all hooks
 exports.aceRegisterBlockElements = aceRegisterBlockElements;
 exports.aceInitialized = aceInitialized;
@@ -99,3 +121,4 @@ exports.postAceInit = postAceInit;
 exports.aceDomLineProcessLineAttributes = aceDomLineProcessLineAttributes;
 exports.aceAttribsToClasses = aceAttribsToClasses;
 exports.aceEditorCSS = aceEditorCSS;
+exports.aceKeyEvent = aceKeyEvent;
