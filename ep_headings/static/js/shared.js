@@ -11,9 +11,6 @@ var collectContentPre = function(hook, context){
   if(tagIndex >= 0){
     lineAttributes['heading'] = tags[tagIndex];
   }
-  else {
-    delete lineAttributes['heading'];
-  }
 };
 
 exports.collectContentPre = collectContentPre;
