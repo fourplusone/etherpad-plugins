@@ -7,7 +7,10 @@
   	{
 		"name": "Matthias Bartelmeß",
   		"email": "mba@fourplusone.de"
-	}
+	},{
+                "name": "John McLear",
+                "email": "john@mclear.co.uk"
+        }
   ],
   "dependencies": {},
   "engines": {
