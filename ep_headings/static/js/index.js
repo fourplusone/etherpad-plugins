@@ -18,7 +18,7 @@ var postAceInit = function(hook, context){
     var value = $(this).val();
     var intValue = parseInt(value,10);
     if(!_.isNaN(intValue)){
-      context.ace.callWithAce(function(ace){ //ace is not defined?
+      context.ace.callWithAce(function(ace){
         ace.ace_doInsertHeading(intValue);
       },'insertheading' , true);
       hs.val("dummy");
