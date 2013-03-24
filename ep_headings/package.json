@@ -1,13 +1,16 @@
 {
   "description": "Adds heading support to Etherpad Lite.",
   "name": "ep_headings",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "fourplusone <info@fourplusone.de>",
   "contributors": [
   	{
 		"name": "Matthias Bartelmeß",
   		"email": "mba@fourplusone.de"
-	}
+	},
+        {       "name": "John McLear",
+                "email": "john@mclear.co.uk"
+        }
   ],
   "dependencies": {},
   "engines": {
