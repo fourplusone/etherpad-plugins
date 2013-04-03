@@ -6,7 +6,7 @@ var headingClass = 'heading';
 var cssFiles = ['ep_headings/static/css/editor.css'];
 
 // All our tags are block elements, so we just return them.
-var tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+var tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code'];
 var aceRegisterBlockElements = function(){
   return tags;
 }

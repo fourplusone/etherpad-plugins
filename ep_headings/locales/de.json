@@ -6,5 +6,6 @@
   "ep_headings.h3" : "Überschrift 3",
   "ep_headings.h4" : "Überschrift 4",
   "ep_headings.h5" : "Überschrift 5",
-  "ep_headings.h6" : "Überschrift 6"
+  "ep_headings.h6" : "Überschrift 6",
+  "ep_headings.code" : "Code"
 }
