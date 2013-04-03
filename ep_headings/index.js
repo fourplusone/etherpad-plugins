@@ -5,36 +5,38 @@ exports.eejsBlock_editbarMenuLeft = function (hook_name, args, cb) {
   return cb();
 }
 
-function getFontSize(header) {
-  var fontSize = "2.0";
+function getInlineStyle(header) {
   switch (header) {
   case "h1":
-    fontSize = "2.0";
+    return "font-size: 2.0em;line-height: 120%;";
     break;
   case "h2":
-    fontSize = "1.5";
+    return "font-size: 1.5em;line-height: 120%;";
     break;
   case "h3":
-    fontSize = "1.17";
+    return "font-size: 1.17em;line-height: 120%;";
     break;
   case "h4":
-    fontSize = "";
+    return "line-height: 120%;";
     break;
   case "h5":
-    fontSize = "0.83";
+    return "font-size: 0.83em;line-height: 120%;";
     break;
   case "h6":
-    fontSize = "0.75";
+    return "font-size: 0.75em;line-height: 120%;";
     break;
+  case "code":
+    return "font-family: monospace";
   }
-  return fontSize;
+  
+  return "";
 }
 // line, apool,attribLine,text
 exports.getLineHTMLForExport = function (hook, context) {
   var header = _analyzeLine(context.attribLine, context.apool);
   if (header) {
-    var fontSize = getFontSize(header);
-    return "<" + header + " style=\"font-size: " + fontSize + "em;line-height: 0.5em;\">" + context.text.substring(1) + "</" + header + ">";
+    var inlineStyle = getInlineStyle(header);
+    return "<" + header + " style=\"" + inlineStyle + "\">" + context.text.substring(1) + "</" + header + ">";
   }
 }
 
