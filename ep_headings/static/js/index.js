@@ -13,20 +13,31 @@ var aceRegisterBlockElements = function(){
 
 // Bind the event handler to the toolbar buttons
 var postAceInit = function(hook, context){
-  var hs = $('#heading-selection');
+  var hs = $('.heading-selection');
   hs.on('change', function(){
     var value = $(this).val();
     var intValue = parseInt(value,10);
     if(!_.isNaN(intValue)){
-      context.ace.callWithAce(function(ace){
-        ace.ace_doInsertHeading(intValue);
-      },'insertheading' , true);
-      hs.val("dummy");
+      applyHeading(context, intValue);
     }
   })
+  $('.ep_heading_n').click(function(){applyHeading(context,-1)});
+  $('.ep_heading_h1').click(function(){applyHeading(context,0)});
+  $('.ep_heading_h2').click(function(){applyHeading(context,1)});
+  $('.ep_heading_h3').click(function(){applyHeading(context,2)});
+  $('.ep_heading_h4').click(function(){applyHeading(context,3)});
+  $('.ep_heading_h5').click(function(){applyHeading(context,4)});
+  $('.ep_heading_h6').click(function(){applyHeading(context,5)});
+  $('.ep_heading_m').click(function(){applyHeading(context,6)});
 };
 
 
+function applyHeading(context, heading){
+  context.ace.callWithAce(function(ace){
+    ace.ace_doInsertHeading(heading);
+  },'insertheading' , true);
+  $('.heading-selection').val("dummy");
+}
 
 // Our heading attribute will result in a heaading:h1... :h6 class
 function aceAttribsToClasses(hook, context){

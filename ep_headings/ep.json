@@ -14,7 +14,8 @@
       "hooks": {
         "eejsBlock_editbarMenuLeft": "ep_headings/index",
         "collectContentPre": "ep_headings/static/js/shared",
-        "collectContentPost": "ep_headings/static/js/shared"
+        "collectContentPost": "ep_headings/static/js/shared",
+        "eejsBlock_dd_format":"ep_headings/index"
       }
     }
   ]
