@@ -20,6 +20,8 @@ var postAceInit = function(hook, context){
     if(!_.isNaN(intValue)){
       applyHeading(context, intValue);
     }
+    // give focus to editor (required for FF)
+    $('iframe[name="ace_outer"]').contents().find('iframe[name="ace_inner"]').focus();                      
   })
   $('.ep_heading_n').click(function(){applyHeading(context,-1)});
   $('.ep_heading_h1').click(function(){applyHeading(context,0)});
