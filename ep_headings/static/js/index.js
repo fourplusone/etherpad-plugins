@@ -20,8 +20,6 @@ var postAceInit = function(hook, context){
     if(!_.isNaN(intValue)){
       applyHeading(context, intValue);
     }
-    // give focus back to the editor
-    $('iframe[name="ace_outer"]').contents().find('iframe[name="ace_inner"]').contents().focus();
   })
   $('.ep_heading_n').click(function(){applyHeading(context,-1)});
   $('.ep_heading_h1').click(function(){applyHeading(context,0)});
@@ -39,6 +37,9 @@ function applyHeading(context, heading){
     ace.ace_doInsertHeading(heading);
   },'insertheading' , true);
   $('.heading-selection').val("dummy");
+
+  // give focus back to editor
+  $('iframe[name="ace_outer"]').contents().find('iframe[name="ace_inner"]').contents().find("#innerdocbody").focus();
 }
 
 // Our heading attribute will result in a heaading:h1... :h6 class
