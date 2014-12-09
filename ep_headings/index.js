@@ -1,5 +1,7 @@
 var eejs = require('ep_etherpad-lite/node/eejs/');
 var Changeset = require("ep_etherpad-lite/static/js/Changeset");
+var Security = require('ep_etherpad-lite/static/js/security');
+
 exports.eejsBlock_editbarMenuLeft = function (hook_name, args, cb) {
   args.content = args.content + eejs.require("ep_headings/templates/editbarButtons.ejs");
   return cb();
@@ -36,7 +38,7 @@ exports.getLineHTMLForExport = function (hook, context) {
   var header = _analyzeLine(context.attribLine, context.apool);
   if (header) {
     var inlineStyle = getInlineStyle(header);
-    return "<" + header + " style=\"" + inlineStyle + "\">" + context.text.substring(1) + "</" + header + ">";
+    return "<" + header + " style=\"" + inlineStyle + "\">" + Security.escapeHTML(context.text.substring(1)) + "</" + header + ">";
   }
 }
 
