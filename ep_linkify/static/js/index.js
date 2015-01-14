@@ -1,5 +1,5 @@
 /* Include the Security module, we will use this later to escape a HTML attribute*/
-var Security = require('ep_etherpad-lite/static/js/security.js'); 
+var Security = require('ep_etherpad-lite/static/js/security'); 
 
 /* Define the regular expressions we will use to detect if a string looks like a reference to a pad IE [[foo]] */
 var internalHrefRegexp = new RegExp(/\[\[([^\]]+)\]\]/g);
