@@ -1,0 +1,11 @@
+{
+  "ep_headings.style" :  "Style",
+  "ep_headings.normal" : "Normal",
+  "ep_headings.h1" :     "Entête 1",
+  "ep_headings.h2" :     "Entête 2",
+  "ep_headings.h3" :     "Entête 3",
+  "ep_headings.h4" :     "Entête 4",
+  "ep_headings.h5" :     "Entête 5",
+  "ep_headings.h6" :     "Entête 6",
+  "ep_headings.code" :   "Code"
+}
